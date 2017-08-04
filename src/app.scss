@@ -43,6 +43,34 @@ body {
           }
         }
       }
+      .menu__icon {
+        display: none;
+      }
+    }
+  }
+}
+
+// MEDIA
+@media screen and (max-width: 321px) {
+  body {
+    nav {
+      .nav__menu {
+        justify-content: flex-end;
+        .menu__item {
+          display: none;
+        }
+        .menu__icon {
+          display: block;
+          height: 40px;
+          width: 40px;
+          padding-top: 3px;
+          background-color: $green;
+          text-align: center;
+          line-height: 40px;
+          color: $white;
+          font-size: 20px;
+        }
+      }
     }
   }
 }

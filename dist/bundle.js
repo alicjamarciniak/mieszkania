@@ -70,10 +70,39 @@
 "use strict";
 
 
-var css = __webpack_require__(1);
+var _navResponsive = __webpack_require__(1);
+
+var _navResponsive2 = _interopRequireDefault(_navResponsive);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var css = __webpack_require__(2);
+
+window.onload = function () {};
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Navigation = function Navigation() {
+    _classCallCheck(this, Navigation);
+
+    this.template = "\n    <nav class=\"container-fluid\">\n        <ul class=\"nav__menu\">\n            <li class=\"menu__item\">\n                <a class=\"nostyle\" href=\"#\">Inwestycja</a>\n            </li>\n            <li class=\"menu__item\">\n                <a class=\"nostyle\" href=\"#\">Dost\u0119pno\u015B\u0107</a>\n            </li>\n            <li class=\"menu__item\">\n                <a class=\"nostyle\" href=\"#\">Rzuty mieszka\u0144</a>\n            </li>\n            <li class=\"menu__item\">\n                <a class=\"nostyle\" href=\"#\">Kontakt</a>\n            </li>\n            <a href=\"javascript:void(0);\" class=\"menu__icon\" onclick=\"myFunction()\">\n                <span class=\"glyphicon glyphicon-menu-down\" aria-hidden=\"true\"></span>\n            </a>\n        </ul>\n    </nav>\n    ";
+};
+
+exports.default = Navigation;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
