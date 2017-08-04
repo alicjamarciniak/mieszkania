@@ -1,3 +1,33 @@
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-moz-keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-ms-keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-o-keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 * {
   box-sizing: border-box; }
 
@@ -6,8 +36,20 @@ a.nostyle:link, a.nostyle:visited, a.nostyle:hover {
   color: inherit;
   cursor: auto; }
 
+button:focus {
+  outline: none; }
+
 ul {
   list-style: none; }
+
+.nopadding {
+  padding: 0 !important; }
+
+.display--left {
+  left: 0; }
+
+.display--right {
+  right: 0; }
 
 body nav {
   background-color: #60372f;
@@ -34,6 +76,40 @@ body nav {
     body nav .nav__menu .menu__icon {
       display: none; }
 
+body header {
+  height: calc(100vh - 80px);
+  background-color: #000000; }
+  body header .slider {
+    height: 100%;
+    overflow: hidden;
+    position: relative; }
+    body header .slider .slider__item {
+      -webkit-animation: fadein 3s;
+      /* Safari, Chrome and Opera > 12.1 */
+      -moz-animation: fadein 3s;
+      /* Firefox < 16 */
+      -ms-animation: fadein 3s;
+      /* Internet Explorer */
+      -o-animation: fadein 3s;
+      /* Opera < 12.1 */
+      animation: fadein 3s; }
+      body header .slider .slider__item img {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto; }
+    body header .slider .slider__button {
+      margin: auto 0;
+      position: absolute;
+      bottom: 5vh;
+      border: none;
+      background-color: transparent;
+      font-size: 50px;
+      font-weight: 100;
+      color: #19885f; }
+
 @media screen and (max-width: 321px) {
   body nav .nav__menu {
     justify-content: flex-end; }
@@ -48,4 +124,7 @@ body nav {
       text-align: center;
       line-height: 40px;
       color: #ffffff;
-      font-size: 20px; } }
+      font-size: 20px; }
+  body header .slider .slider__item img {
+    width: auto;
+    height: 500px; } }
