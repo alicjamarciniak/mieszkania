@@ -1,5 +1,51 @@
-body {
-  background: pink; }
-  body p {
-    color: white;
-    font-size: 16px; }
+* {
+  box-sizing: border-box; }
+
+a.nostyle:link, a.nostyle:visited, a.nostyle:hover {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto; }
+
+ul {
+  list-style: none; }
+
+body nav {
+  background-color: #60372f;
+  height: 80px; }
+  body nav .nav__menu {
+    margin: 0;
+    display: flex;
+    display: -webkit- flex;
+    height: 100%;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center; }
+    body nav .nav__menu .menu__item {
+      display: flex;
+      display: -webkit- flex;
+      padding: 5px 10px;
+      color: #ffffff;
+      font-size: 14px;
+      text-transform: uppercase; }
+      body nav .nav__menu .menu__item a:hover,
+      body nav .nav__menu .menu__item a .active {
+        color: #19885f; }
+    body nav .nav__menu .menu__icon {
+      display: none; }
+
+@media screen and (max-width: 321px) {
+  body nav .nav__menu {
+    justify-content: flex-end; }
+    body nav .nav__menu .menu__item {
+      display: none; }
+    body nav .nav__menu .menu__icon {
+      display: block;
+      height: 40px;
+      width: 40px;
+      padding-top: 3px;
+      background-color: #19885f;
+      text-align: center;
+      line-height: 40px;
+      color: #ffffff;
+      font-size: 20px; } }

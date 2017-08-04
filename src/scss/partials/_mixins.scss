@@ -1,0 +1,13 @@
+@mixin display-flex($type) {
+  display: $type;
+  display: -webkit-$type;
+}
+
+@mixin align-items($type) {
+  align-items: $type;
+  -webkit-align-items: $type;
+}
+@mixin justify-content($type) {
+  justify-content: $type;
+  -webkit-justify-content: $type;
+}
