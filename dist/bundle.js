@@ -82,7 +82,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var css = __webpack_require__(3);
 
+// import Description from './modules/main-section-description.js';
+// import { printValue } from './modules/services.js';
+
 var slider = new _slider2.default();
+// let description = new Description();
 
 /***/ }),
 /* 1 */
