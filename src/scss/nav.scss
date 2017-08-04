@@ -1,0 +1,53 @@
+body {
+  nav {
+    background-color: $brown;
+    height: 80px;
+    .nav__menu {
+      margin: 0;
+      @include display-flex(flex);
+      height: 100%;
+      @include align-items(center);
+      @include justify-content(center);
+      .menu__item {
+        @include display-flex(flex);
+        padding: 5px 10px;
+        color: $white;
+        font-size: 14px;
+        text-transform: uppercase;
+        a {
+          &:hover,
+          .active {
+            color: $green;
+          }
+        }
+      }
+      .menu__icon {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 321px) {
+  body {
+    nav {
+      .nav__menu {
+        justify-content: flex-end;
+        .menu__item {
+          display: none;
+        }
+        .menu__icon {
+          display: block;
+          height: 40px;
+          width: 40px;
+          padding-top: 3px;
+          background-color: $green;
+          text-align: center;
+          line-height: 40px;
+          color: $white;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

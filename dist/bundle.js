@@ -74,13 +74,13 @@ var _navResponsive = __webpack_require__(1);
 
 var _navResponsive2 = _interopRequireDefault(_navResponsive);
 
-var _slider = __webpack_require__(7);
+var _slider = __webpack_require__(2);
 
 var _slider2 = _interopRequireDefault(_slider);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var css = __webpack_require__(2);
+var css = __webpack_require__(3);
 
 var slider = new _slider2.default();
 
@@ -107,16 +107,6 @@ exports.default = Navigation;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -193,6 +183,12 @@ var Slider = function () {
 }();
 
 exports.default = Slider;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

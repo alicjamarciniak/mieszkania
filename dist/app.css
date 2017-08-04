@@ -76,6 +76,22 @@ body nav {
     body nav .nav__menu .menu__icon {
       display: none; }
 
+@media screen and (max-width: 321px) {
+  body nav .nav__menu {
+    justify-content: flex-end; }
+    body nav .nav__menu .menu__item {
+      display: none; }
+    body nav .nav__menu .menu__icon {
+      display: block;
+      height: 40px;
+      width: 40px;
+      padding-top: 3px;
+      background-color: #19885f;
+      text-align: center;
+      line-height: 40px;
+      color: #ffffff;
+      font-size: 20px; } }
+
 body header {
   height: calc(100vh - 80px);
   background-color: #000000; }
@@ -111,20 +127,6 @@ body header {
       color: #19885f; }
 
 @media screen and (max-width: 321px) {
-  body nav .nav__menu {
-    justify-content: flex-end; }
-    body nav .nav__menu .menu__item {
-      display: none; }
-    body nav .nav__menu .menu__icon {
-      display: block;
-      height: 40px;
-      width: 40px;
-      padding-top: 3px;
-      background-color: #19885f;
-      text-align: center;
-      line-height: 40px;
-      color: #ffffff;
-      font-size: 20px; }
   body header .slider .slider__item img {
     width: auto;
     height: 500px; } }
