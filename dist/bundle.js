@@ -74,11 +74,15 @@ var _navResponsive = __webpack_require__(1);
 
 var _navResponsive2 = _interopRequireDefault(_navResponsive);
 
+var _slider = __webpack_require__(7);
+
+var _slider2 = _interopRequireDefault(_slider);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var css = __webpack_require__(2);
 
-window.onload = function () {};
+var slider = new _slider2.default();
 
 /***/ }),
 /* 1 */
@@ -106,6 +110,89 @@ exports.default = Navigation;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Slider = function () {
+  function Slider() {
+    var _this = this;
+
+    _classCallCheck(this, Slider);
+
+    window.setInterval(function () {
+      return _this.next();
+    }, 4000);
+    this.activeIndex = 0;
+    this.slides = document.querySelectorAll('.slider__item');
+    this.maxIndex = this.slides.length - 1;
+    this.initializeSlider();
+
+    this.leftArrow = document.querySelector('.button__left');
+    this.leftArrow.addEventListener('click', function () {
+      return _this.prev();
+    });
+
+    this.rightArrow = document.querySelector('.button__right');
+    this.rightArrow.addEventListener('click', function () {
+      return _this.next();
+    });
+  }
+
+  _createClass(Slider, [{
+    key: 'showSlide',
+    value: function showSlide() {
+      this.slides[this.activeIndex].style.display = 'block';
+    }
+  }, {
+    key: 'hideSlide',
+    value: function hideSlide() {
+      this.slides[this.activeIndex].style.display = 'none';
+    }
+  }, {
+    key: 'initializeSlider',
+    value: function initializeSlider() {
+      this.slides.forEach(function (slide) {
+        slide.style.display = 'none';
+      });
+      this.showSlide();
+    }
+  }, {
+    key: 'next',
+    value: function next() {
+      this.hideSlide();
+      if (this.activeIndex == this.maxIndex) this.activeIndex = 0;else ++this.activeIndex;
+      this.showSlide();
+    }
+  }, {
+    key: 'prev',
+    value: function prev() {
+      this.hideSlide();
+      if (this.activeIndex == 0) this.activeIndex = this.maxIndex;else --this.activeIndex;
+      this.showSlide();
+    }
+  }]);
+
+  return Slider;
+}();
+
+exports.default = Slider;
 
 /***/ })
 /******/ ]);

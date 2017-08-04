@@ -1,5 +1,6 @@
 const css = require('./app.scss');
 
 import Navigation from './modules/nav-responsive.js';
+import Slider from './modules/slider.js';
 
-window.onload = () => {};
+var slider = new Slider();
