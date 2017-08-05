@@ -135,54 +135,59 @@ body section .section__description {
   background-color: #ffffff;
   min-height: 50vh;
   padding: 50px 0; }
-  body section .section__description .description__filters .filters__item {
-    margin: 5px 0; }
-    body section .section__description .description__filters .filters__item.filters__box {
-      background-color: #e5e5e5;
-      height: 40px; }
-      body section .section__description .description__filters .filters__item.filters__box .box__label {
-        display: flex;
-        display: -webkit- flex;
-        height: 100%;
-        align-items: stretch;
-        -webkit-align-items: stretch;
-        line-height: 40px; }
-        body section .section__description .description__filters .filters__item.filters__box .box__label .label__text {
-          flex: 7;
-          -webkit-flex: 7;
-          padding-left: 20px;
-          font-size: 14px;
-          color: #54555a; }
-        body section .section__description .description__filters .filters__item.filters__box .box__label .label__arrow {
-          flex: 3;
-          -webkit-flex: 3;
-          background-color: #19885f;
-          padding-top: 3px;
-          font-size: 25px;
-          color: #ffffff;
-          text-align: center; }
-          body section .section__description .description__filters .filters__item.filters__box .box__label .label__arrow .glyphicon-menu-up {
-            display: none; }
-      body section .section__description .description__filters .filters__item.filters__box .box__options {
-        background-color: #e5e5e5; }
-        body section .section__description .description__filters .filters__item.filters__box .box__options .options__item {
-          display: block;
-          padding: 5px 10px;
-          font-weight: normal; }
-          body section .section__description .description__filters .filters__item.filters__box .box__options .options__item input {
-            padding: 4px; }
-    body section .section__description .description__filters .filters__item.filters__button {
-      height: 40px;
-      background-color: #54555a;
-      text-align: center;
-      line-height: 40px;
-      font-size: 14px;
-      text-transform: uppercase; }
-      body section .section__description .description__filters .filters__item.filters__button .button__label {
-        color: #ffffff; }
 
-body .description__categories {
-  display: flex;
-  display: -webkit- flex;
-  justify-content: space-between;
-  -webkit-justify-content: space-between; }
+body section .section__description {
+  background-color: #ffffff;
+  min-height: 50vh;
+  padding: 50px 0; }
+  body section .section__description .description__categories {
+    display: flex;
+    display: -webkit- flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between; }
+
+body section .section__description .description__filters .filters__item {
+  margin: 5px 0; }
+  body section .section__description .description__filters .filters__item.filters__box {
+    background-color: #e5e5e5;
+    height: 40px; }
+    body section .section__description .description__filters .filters__item.filters__box .box__label {
+      display: flex;
+      display: -webkit- flex;
+      height: 100%;
+      align-items: stretch;
+      -webkit-align-items: stretch;
+      line-height: 40px; }
+      body section .section__description .description__filters .filters__item.filters__box .box__label .label__text {
+        flex: 7;
+        -webkit-flex: 7;
+        padding-left: 20px;
+        font-size: 14px;
+        color: #54555a; }
+      body section .section__description .description__filters .filters__item.filters__box .box__label .label__arrow {
+        flex: 3;
+        -webkit-flex: 3;
+        background-color: #19885f;
+        padding-top: 3px;
+        font-size: 25px;
+        color: #ffffff;
+        text-align: center; }
+        body section .section__description .description__filters .filters__item.filters__box .box__label .label__arrow .glyphicon-menu-up {
+          display: none; }
+    body section .section__description .description__filters .filters__item.filters__box .box__options {
+      background-color: #e5e5e5; }
+      body section .section__description .description__filters .filters__item.filters__box .box__options .options__item {
+        display: block;
+        padding: 5px 10px;
+        font-weight: normal; }
+        body section .section__description .description__filters .filters__item.filters__box .box__options .options__item input {
+          padding: 4px; }
+  body section .section__description .description__filters .filters__item.filters__button {
+    height: 40px;
+    background-color: #54555a;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    text-transform: uppercase; }
+    body section .section__description .description__filters .filters__item.filters__button .button__label {
+      color: #ffffff; }

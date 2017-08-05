@@ -244,7 +244,7 @@ var DescriptionFilters = function () {
   return DescriptionFilters;
 }();
 
-exports.default = Description;
+exports.default = DescriptionFilters;
 
 /***/ }),
 /* 4 */
