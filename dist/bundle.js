@@ -78,15 +78,21 @@ var _slider = __webpack_require__(2);
 
 var _slider2 = _interopRequireDefault(_slider);
 
+var _sectionDescriptionFilters = __webpack_require__(3);
+
+var _sectionDescriptionFilters2 = _interopRequireDefault(_sectionDescriptionFilters);
+
+var _sectionDescriptionCategories = __webpack_require__(5);
+
+var _sectionDescriptionCategories2 = _interopRequireDefault(_sectionDescriptionCategories);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var css = __webpack_require__(3);
-
-// import Description from './modules/main-section-description.js';
-// import { printValue } from './modules/services.js';
+var css = __webpack_require__(6);
 
 var slider = new _slider2.default();
-// let description = new Description();
+var descriptionFilters = new _sectionDescriptionFilters2.default();
+var descriptionCategories = new _sectionDescriptionCategories2.default();
 
 /***/ }),
 /* 1 */
@@ -190,6 +196,125 @@ exports.default = Slider;
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _services = __webpack_require__(4);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DescriptionFilters = function () {
+  function DescriptionFilters() {
+    _classCallCheck(this, DescriptionFilters);
+
+    this.filters = [];
+
+    this.initializePrice();
+  }
+
+  _createClass(DescriptionFilters, [{
+    key: 'addFilterItem',
+    value: function addFilterItem() {}
+  }, {
+    key: 'loadFiletrs',
+    value: function loadFiletrs() {}
+  }, {
+    key: 'initializePrice',
+    value: function initializePrice() {
+      var priceSlideMin = document.getElementById('slider-min');
+      var priceSlideMax = document.getElementById('slider-max');
+
+      priceSlideMin.addEventListener('change', function () {
+        return (0, _services.printValue)('#slider-min', '#rangeValueMin');
+      });
+      priceSlideMax.addEventListener('change', function () {
+        return (0, _services.printValue)('#slider-max', '#rangeValueMax');
+      });
+    }
+  }]);
+
+  return DescriptionFilters;
+}();
+
+exports.default = Description;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var printValue = exports.printValue = function printValue(inputSelector, outputSelector) {
+  var input = document.querySelector(inputSelector);
+  var output = document.querySelector(outputSelector);
+
+  output.value = input.value;
+};
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DescriptionCategories = function () {
+  function DescriptionCategories() {
+    _classCallCheck(this, DescriptionCategories);
+
+    this.categoryItemInner = '\n    <div class="category__item">\n      <div class="item__label">\n        <div class="label__title">' + title + '</div>\n         <div class="label__arrows">\n\n         </div>\n        </div>\n      <div class="item__records"></div>\n    </div>';
+    this.categories = ['nr budynku, mieszkania', 'kondygnacja', 'powierzchnia użytkowa', 'powierzchnia ogródka/strychu', 'cena brutto', 'plan', 'status'];
+    this.descriptionCategories = document.querySelector('.description__categories');
+
+    this.loadCategories();
+  }
+
+  _createClass(DescriptionCategories, [{
+    key: 'addCategoryItem',
+    value: function addCategoryItem(title) {
+      var categoryItem = document.createElement('div');
+
+      categoryItem.innerHTML = categoryItemInner;
+      this.descriptionCategories.appendChild(categoryItem);
+    }
+  }, {
+    key: 'loadCategories',
+    value: function loadCategories() {
+      var _this = this;
+
+      this.categories.forEach(function (category) {
+        _this.addCategoryItem(category);
+      });
+    }
+  }]);
+
+  return DescriptionCategories;
+}();
+
+exports.default = DescriptionCategories;
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
