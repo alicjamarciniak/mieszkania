@@ -1,15 +1,5 @@
 class DescriptionCategories {
   constructor() {
-    this.categoryItemInner = `
-    <div class="category__item">
-      <div class="item__label">
-        <div class="label__title">${title}</div>
-         <div class="label__arrows">
-
-         </div>
-        </div>
-      <div class="item__records"></div>
-    </div>`;
     this.categories = [
       'nr budynku, mieszkania',
       'kondygnacja',
@@ -27,6 +17,16 @@ class DescriptionCategories {
   }
 
   addCategoryItem(title) {
+    let categoryItemInner = `
+    <div class="category__item">
+      <div class="item__label">
+        <div class="label__title">${title}</div>
+         <div class="label__arrows">
+
+         </div>
+        </div>
+      <div class="item__records"></div>
+    </div>`;
     let categoryItem = document.createElement('div');
 
     categoryItem.innerHTML = categoryItemInner;

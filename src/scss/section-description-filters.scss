@@ -6,7 +6,7 @@ body {
           margin: 5px 0;
           &.filters__box {
             background-color: $light-grey;
-            height: 40px;
+            height: auto;
             .box__label {
               @include display-flex(flex);
               height: 100%;

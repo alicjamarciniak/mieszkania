@@ -2,193 +2,69 @@
 <html lang='en'>
 
 <head>
-    <title>Mieszkania</title>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' href='dist/app.css'>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  <title>Mieszkania</title>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' href='dist/app.css'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 </head>
 
 
 <body>
-    <nav class='container-fluid'>
-        <ul class='nav__menu'>
-            <li class='menu__item'>
-                <a class='nostyle' href='#'>Inwestycja</a>
-            </li>
-            <li class='menu__item'>
-                <a class='nostyle' href='#'>Dostępność</a>
-            </li>
-            <li class='menu__item'>
-                <a class='nostyle' href='#'>Rzuty mieszkań</a>
-            </li>
-            <li class='menu__item'>
-                <a class='nostyle' href='#'>Kontakt</a>
-            </li>
-            <a href='javascript:void(0);' class='menu__icon' onclick='myFunction()'>
+  <nav class='container-fluid'>
+    <ul class='nav__menu'>
+      <li class='menu__item'>
+        <a class='nostyle' href='#'>Inwestycja</a>
+      </li>
+      <li class='menu__item'>
+        <a class='nostyle' href='#'>Dostępność</a>
+      </li>
+      <li class='menu__item'>
+        <a class='nostyle' href='#'>Rzuty mieszkań</a>
+      </li>
+      <li class='menu__item'>
+        <a class='nostyle' href='#'>Kontakt</a>
+      </li>
+      <a href='javascript:void(0);' class='menu__icon' onclick='myFunction()'>
                 <span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>
             </a>
 
-        </ul>
+    </ul>
 
-    </nav>
-    <header class='container-fluid nopadding'>
-        <div class='slider'>
-            <div class="slider__item">
-                <img src="images/estate_2.jpg" alt="">
-            </div>
-            <div class="slider__item">
-                <img src="images/estate_3.jpg" alt="">
-            </div>
-            <div class="slider__item">
-                <img src="images/estate_2.jpg" alt="">
-            </div>
-            <div class="slider__item">
-                <img src="images/estate_3.jpg" alt="">
-            </div>
+  </nav>
+  <header class='container-fluid nopadding'>
+    <div class='slider'>
+      <div class="slider__item">
+        <img src="images/estate_2.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img src="images/estate_3.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img src="images/estate_2.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img src="images/estate_3.jpg" alt="">
+      </div>
 
-            <button class="button__left slider__button display--left">&#10094;</button>
-            <button class="button__right slider__button display--right">&#10095;</button>
+      <button class="button__left slider__button display--left">&#10094;</button>
+      <button class="button__right slider__button display--right">&#10095;</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="section__description container-fluid">
+      <div class="container">
+        <div class="description__filters row">
         </div>
-    </header>
-
-    <section>
-        <div class="section__description container-fluid">
-            <div class="container">
-                <div class="description__filters row">
-                    <div class="col-md-2 col-xs-6">
-
-                        <div class="filters__box filters__item">
-                            <div class="box__label">
-                                <div class="label__text">
-                                    kondygnacja
-                                </div>
-                                <div class="label__arrow">
-                                    <span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>
-                                    <span class='glyphicon glyphicon-menu-up' aria-hidden='true'></span>
-                                </div>
-                            </div>
-
-                            <div class="box__options">
-                                <form>
-                                    <label class="options__item">
-                                        <input name="P11" type="checkbox" value="p11">
-                                        P11
-                                    </label>
-                                    <label class="options__item">
-                                        <input name="P12" type="checkbox" value="p12">
-                                        P12
-                                    </label>
-                                    <label class="options__item">
-                                        <input name="P13" type="checkbox" value="p13">
-                                        P13
-                                    </label>
-                                </form>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-md-2 col-xs-6">
-                        <div class="filters__box filters__item">
-                            <div class="box__label">
-                                <div class="label__text">
-                                    ogródek/strych
-                                </div>
-                                <div class="label__arrow">
-                                    <span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>
-                                    <span class='glyphicon glyphicon-menu-up' aria-hidden='true'></span>
-                                </div>
-                            </div>
-                            <div class="box__options">
-                                <form>
-                                    <label class="options__item">
-                                        <input name="attic" type="checkbox" value="strych">
-                                        strych
-                                    </label>
-                                    <label class="options__item">
-                                        <input name="garden" type="checkbox" value="ogródek">
-                                        ogródek
-                                    </label>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-xs-6">
-                        <div class="filters__box filters__item ">
-                            <div class="box__label">
-                                <div class="label__text">
-                                    status
-                                </div>
-                                <div class="label__arrow">
-                                    <span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>
-                                    <span class='glyphicon glyphicon-menu-up' aria-hidden='true'></span>
-                                </div>
-                            </div>
-                            <div class="box__options">
-                                <form>
-                                    <label class="options__item">
-                                        <input name="forsale" type="checkbox" value="wolny">
-                                        wolny
-                                    </label>
-                                    <label class="options__item">
-                                        <input name="reserved" type="checkbox" value="rezerwacja">
-                                        rezerwacja
-                                    </label>
-                                    <label class="options__item">
-                                        <input name="soldout" type="checkbox" value="sprzedany">
-                                        sprzedany
-                                    </label>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-xs-6">
-                        <div class="filters__box filters__item">
-                            <div class="box__label">
-                                <div class="label__text">
-                                    cena
-                                </div>
-                                <div class="label__arrow">
-                                    <span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>
-                                    <span class='glyphicon glyphicon-menu-up' aria-hidden='true'></span>
-                                </div>
-                            </div>
-                            <div class="box__options">
-                                <form>
-                                    <label class="options__item">
-                                        min:
-                                        <input id="rangeValueMin" type="text" size="6" value="0">
-                                        PLN
-                                        <input id="slider-min" type="range" min="0" max="500000" step="10000"/>
-                                    </label>
-                                    <label class="options__item">
-                                        max:
-                                        <input id="rangeValueMax" type="text" size="6" value="500000">
-                                        PLN
-                                        <input id="slider-max" type="range" min="0" max="500000" step="10000"/>
-                                    </label>
-                                </form>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div class="filters__button filters__item">
-                            <div class="button__label">filtrowanie</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="description__categories row">
-                </div>
-            </div>
+        <div class="description__categories row">
         </div>
+      </div>
+    </div>
 
-    </section>
+  </section>
 
-    <script src='dist/bundle.js'></script>
+  <script src='dist/bundle.js'></script>
 </body>
 
 </html>
