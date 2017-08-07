@@ -56,6 +56,9 @@ ul {
 .display--right {
   right: 0; }
 
+.clear-both {
+  clear: both; }
+
 body nav {
   background-color: #60372f;
   height: 80px; }
@@ -233,3 +236,41 @@ body section .section__description .description__filters .filters__item {
     text-transform: uppercase; }
     body section .section__description .description__filters .filters__item.filters__button .button__label {
       color: #ffffff; }
+
+body section .section__views {
+  background: url("/home/drallum/Desktop/mieszkania/src/images/views_background.png") center no-repeat;
+  height: 850px;
+  display: flex;
+  display: -webkit- flex;
+  align-items: center;
+  -webkit-align-items: center; }
+  body section .section__views .views__item {
+    display: block; }
+    body section .section__views .views__item .view__images {
+      padding-right: 15px;
+      width: 50%;
+      float: left; }
+      body section .section__views .views__item .view__images .image__item {
+        display: none; }
+        body section .section__views .views__item .view__images .image__item.active {
+          display: inline; }
+    body section .section__views .views__item .view__categories {
+      padding-left: 15px;
+      width: 50%;
+      float: left; }
+      body section .section__views .views__item .view__categories .category__item {
+        background: #54555a;
+        height: 50px;
+        width: calc(50% - 15px);
+        margin-bottom: 15px;
+        float: left; }
+        body section .section__views .views__item .view__categories .category__item:nth-child(even) {
+          margin-left: 15px; }
+        body section .section__views .views__item .view__categories .category__item:nth-child(odd) {
+          margin-right: 15px; }
+    body section .section__views .views__item .view__description {
+      background: green;
+      padding-left: 15px;
+      width: 50%;
+      height: 70px;
+      float: left; }

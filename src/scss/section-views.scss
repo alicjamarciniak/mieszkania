@@ -1,0 +1,53 @@
+body {
+  section {
+    .section__views {
+      background: url('/home/drallum/Desktop/mieszkania/src/images/views_background.png')
+        center no-repeat;
+      height: 850px;
+      @include display-flex(flex);
+      @include align-items(center);
+      .views__item {
+        display: block;
+        .view__images {
+          padding-right: 15px;
+          width: 50%;
+          float: left;
+          .image__item {
+            display: none;
+            &.active {
+              display: inline;
+            }
+          }
+        }
+        .view__categories {
+          //   @include display-flex(flex);
+          //   @include justify-content(space-between);
+          //   @include align-items (space-between);
+          padding-left: 15px;
+          width: 50%;
+          float: left;
+          .category__item {
+            background: $dark-grey;
+            height: 50px;
+            width: calc(50% - 15px);
+            margin-bottom: 15px;
+            float: left;
+            &:nth-child(even) {
+              margin-left: 15px;
+            }
+            &:nth-child(odd) {
+              margin-right: 15px;
+            }
+          }
+        }
+        .view__description {
+          background: green;
+          padding-left: 15px;
+          width: 50%;
+          height: 70px;
+          float: left;
+        }
+      }
+    }
+  }
+}
