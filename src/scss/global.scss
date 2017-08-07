@@ -1,13 +1,24 @@
 * {
   box-sizing: border-box;
 }
-a.nostyle {
-  &:link,
-  &:visited,
-  &:hover {
-    text-decoration: inherit;
-    color: inherit;
-    cursor: auto;
+a {
+  &.nostyle {
+    &:link,
+    &:visited,
+    &:hover {
+      text-decoration: inherit;
+      color: inherit;
+      cursor: auto;
+    }
+  }
+  &.disabled {
+    &:link,
+    &:visited,
+    &:hover {
+      pointer-events: none;
+      cursor: default;
+      color: $light-grey;
+    }
   }
 }
 button {

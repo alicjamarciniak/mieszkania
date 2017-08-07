@@ -2,57 +2,69 @@
 <html lang='en'>
 
 <head>
-    <title>Mieszkania</title>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' href='dist/app.css'>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  <title>Mieszkania</title>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' href='dist/app.css'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 </head>
 
 
 <body>
-    <nav class='container-fluid'>
-        <ul class='nav__menu'>
-            <li class='menu__item'>
-                <a class='nostyle' href='#'>Inwestycja</a>
-            </li>
-            <li class='menu__item'>
-                <a class='nostyle' href='#'>Dostępność</a>
-            </li>
-            <li class='menu__item'>
-                <a class='nostyle' href='#'>Rzuty mieszkań</a>
-            </li>
-            <li class='menu__item'>
-                <a class='nostyle' href='#'>Kontakt</a>
-            </li>
-            <a href='javascript:void(0);' class='menu__icon' onclick='myFunction()'>
+  <nav class='container-fluid'>
+    <ul class='nav__menu'>
+      <li class='menu__item'>
+        <a class='nostyle' href='#'>Inwestycja</a>
+      </li>
+      <li class='menu__item'>
+        <a class='nostyle' href='#'>Dostępność</a>
+      </li>
+      <li class='menu__item'>
+        <a class='nostyle' href='#'>Rzuty mieszkań</a>
+      </li>
+      <li class='menu__item'>
+        <a class='nostyle' href='#'>Kontakt</a>
+      </li>
+      <a href='javascript:void(0);' class='menu__icon' onclick='myFunction()'>
                 <span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>
             </a>
 
-        </ul>
+    </ul>
 
-    </nav>
-    <header class='container-fluid nopadding'>
-        <div class='slider'>
-            <div class="slider__item">
-                <img src="images/estate_2.jpg" alt="">
-            </div>
-            <div class="slider__item">
-                <img src="images/estate_3.jpg" alt="">
-            </div>
-            <div class="slider__item">
-                <img src="images/estate_2.jpg" alt="">
-            </div>
-            <div class="slider__item">
-                <img src="images/estate_3.jpg" alt="">
-            </div>
+  </nav>
+  <header class='container-fluid nopadding'>
+    <div class='slider'>
+      <div class="slider__item">
+        <img src="images/estate_2.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img src="images/estate_3.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img src="images/estate_2.jpg" alt="">
+      </div>
+      <div class="slider__item">
+        <img src="images/estate_3.jpg" alt="">
+      </div>
 
-            <button class="button__left slider__button display--left">&#10094;</button>
-            <button class="button__right slider__button display--right">&#10095;</button>
+      <button class="button__left slider__button display--left">&#10094;</button>
+      <button class="button__right slider__button display--right">&#10095;</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="section__description container-fluid">
+      <div class="container">
+        <div class="description__filters row">
         </div>
-    </header>
+        <div class="description__categories row">
+        </div>
+      </div>
+    </div>
 
-    <script src='dist/bundle.js'></script>
+  </section>
+
+  <script src='dist/bundle.js'></script>
 </body>
 
 </html>
