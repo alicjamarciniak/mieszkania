@@ -86,13 +86,13 @@ var _sectionDescriptionCategories = __webpack_require__(6);
 
 var _sectionDescriptionCategories2 = _interopRequireDefault(_sectionDescriptionCategories);
 
-var _sectionDescriptionRecords = __webpack_require__(12);
+var _sectionDescriptionRecords = __webpack_require__(7);
 
 var _sectionDescriptionRecords2 = _interopRequireDefault(_sectionDescriptionRecords);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var css = __webpack_require__(7);
+var css = __webpack_require__(9);
 
 var slider = new _slider2.default();
 var descriptionFilters = new _sectionDescriptionFilters2.default();
@@ -512,16 +512,6 @@ exports.default = DescriptionCategories;
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -533,7 +523,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _descriptionsArray = __webpack_require__(13);
+var _descriptionsArray = __webpack_require__(8);
 
 var _descriptionsArray2 = _interopRequireDefault(_descriptionsArray);
 
@@ -629,7 +619,7 @@ var DescriptionRecords = function () {
 exports.default = DescriptionRecords;
 
 /***/ }),
-/* 13 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -760,6 +750,12 @@ var descriptionsArray = [{
   status: 'sprzedany'
 }];
 exports.default = descriptionsArray;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
