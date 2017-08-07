@@ -86,6 +86,10 @@ var _sectionDescriptionCategories = __webpack_require__(6);
 
 var _sectionDescriptionCategories2 = _interopRequireDefault(_sectionDescriptionCategories);
 
+var _sectionDescriptionRecords = __webpack_require__(12);
+
+var _sectionDescriptionRecords2 = _interopRequireDefault(_sectionDescriptionRecords);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var css = __webpack_require__(7);
@@ -93,6 +97,7 @@ var css = __webpack_require__(7);
 var slider = new _slider2.default();
 var descriptionFilters = new _sectionDescriptionFilters2.default();
 var descriptionCategories = new _sectionDescriptionCategories2.default();
+var descriptionRecords = new _sectionDescriptionRecords2.default();
 
 /***/ }),
 /* 1 */
@@ -482,9 +487,10 @@ var DescriptionCategories = function () {
   _createClass(DescriptionCategories, [{
     key: 'addCategoryItem',
     value: function addCategoryItem(title) {
-      var categoryItemInner = '\n    <div class="category__item">\n      <div class="item__label">\n        <div class="label__title">' + title + '</div>\n         <div class="label__arrows">\n\n         </div>\n        </div>\n      <div class="item__records"></div>\n    </div>';
+      var categoryItemInner = '\n      <div class="item__label">\n        <div class="label__title">' + title + '</div>\n         <div class="label__arrows">\n          <span class=\'glyphicon glyphicon-menu-up\' aria-hidden=\'true\'></span>\n          <span class=\'glyphicon glyphicon-menu-down\' aria-hidden=\'true\'></span>\n         </div>\n        </div>\n      <div class="item__records"></div>';
       var categoryItem = document.createElement('div');
 
+      categoryItem.className = 'category__item';
       categoryItem.innerHTML = categoryItemInner;
       this.descriptionCategories.appendChild(categoryItem);
     }
@@ -509,6 +515,251 @@ exports.default = DescriptionCategories;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _descriptionsArray = __webpack_require__(13);
+
+var _descriptionsArray2 = _interopRequireDefault(_descriptionsArray);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DescriptionRecords = function () {
+  function DescriptionRecords() {
+    _classCallCheck(this, DescriptionRecords);
+
+    this.recordsArray = _descriptionsArray2.default;
+    this.categories = document.querySelectorAll('.category__item');
+    this.columns = {
+      no: this.categories[0].querySelector('.item__records'),
+      condignation: this.categories[1].querySelector('.item__records'),
+      usableArea: this.categories[2].querySelector('.item__records'),
+      extraArea: this.categories[3].querySelector('.item__records'),
+      brutto: this.categories[4].querySelector('.item__records'),
+      planUrl: this.categories[5].querySelector('.item__records'),
+      status: this.categories[6].querySelector('.item__records')
+    };
+
+    this.loadRecords();
+  }
+
+  _createClass(DescriptionRecords, [{
+    key: 'addRecord',
+    value: function addRecord(record) {
+      for (var column in this.columns) {
+        var cell = document.createElement('div');
+        cell.dataset.recordId = record.id;
+        cell.className = 'record__cell';
+        switch (column) {
+          case 'no':
+            cell.innerHTML = record.no;
+            break;
+          case 'usableArea':
+            cell.innerHTML = record.usableArea + ' m&#178;';
+            break;
+          case 'extraArea':
+            cell.innerHTML = record.extraAreaType + ' ' + record.extraAreaSize + ' m&#178;';
+            break;
+          case 'brutto':
+            cell.innerHTML = record.brutto + ' z\u0142';
+            break;
+          case 'condignation':
+            cell.innerHTML = record.condignation;
+            break;
+          case 'planUrl':
+            var anchor = document.createElement('a');
+            anchor.className = 'nostyle';
+            anchor.innerHTML = 'pobierz';
+            if (record.planUrl) {
+              anchor.href = record.planUrl;
+            } else {
+              anchor.href = '#';
+              anchor.className += ' disabled';
+            }
+            cell.appendChild(anchor);
+            break;
+          case 'status':
+            cell.innerHTML = record.status;
+            switch (record.status) {
+              case 'wolny':
+                cell.className += ' forsale';
+                break;
+              case 'sprzedany':
+                cell.className += ' soldout';
+                break;
+              default:
+                cell.className += ' reserved';
+            }
+            break;
+        }
+        this.columns[column].appendChild(cell);
+      }
+    }
+  }, {
+    key: 'loadRecords',
+    value: function loadRecords() {
+      var _this = this;
+
+      this.recordsArray.forEach(function (record) {
+        _this.addRecord(record);
+      });
+    }
+  }]);
+
+  return DescriptionRecords;
+}();
+
+exports.default = DescriptionRecords;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var descriptionsArray = [{
+  id: 1,
+  no: 'P11A',
+  condignation: 'parter',
+  usableArea: 64.32,
+  extraAreaType: 'ogródek',
+  extraAreaSize: 81,
+  brutto: 289500,
+  planUrl: null,
+  status: 'wolny'
+}, {
+  id: 2,
+  no: 'P11B',
+  condignation: 'piętro',
+  usableArea: 66.57,
+  extraAreaType: 'strych',
+  extraAreaSize: 15,
+  brutto: 259500,
+  planUrl: '#',
+  status: 'rezerwacja'
+}, {
+  id: 3,
+  no: 'P12A',
+  condignation: 'parter',
+  usableArea: 64.32,
+  extraAreaType: 'ogródek',
+  extraAreaSize: 84,
+  brutto: 289500,
+  planUrl: '#',
+  status: 'wolny'
+}, {
+  id: 4,
+  no: 'P12B',
+  condignation: 'piętro',
+  usableArea: 66.57,
+  extraAreaType: 'strych',
+  extraAreaSize: 15,
+  brutto: 259500,
+  planUrl: null,
+  status: 'wolny'
+}, {
+  id: 5,
+  no: 'P13A',
+  condignation: 'parter',
+  usableArea: 64.32,
+  extraAreaType: 'ogródek',
+  extraAreaSize: 82,
+  brutto: 289500,
+  planUrl: null,
+  status: 'wolny'
+}, {
+  id: 6,
+  no: 'P13B',
+  condignation: 'piętro',
+  usableArea: 66.57,
+  extraAreaType: 'strych',
+  extraAreaSize: 15,
+  brutto: 259500,
+  planUrl: null,
+  status: 'wolny'
+}, {
+  id: 7,
+  no: 'P14A',
+  condignation: 'parter',
+  usableArea: 64.32,
+  extraAreaType: 'ogródek',
+  extraAreaSize: 89,
+  brutto: 289500,
+  planUrl: null,
+  status: 'wolny'
+}, {
+  id: 8,
+  no: 'P14B',
+  condignation: 'piętro',
+  usableArea: 66.57,
+  extraAreaType: 'strych',
+  extraAreaSize: 15,
+  brutto: 259500,
+  planUrl: '#',
+  status: 'wolny'
+}, {
+  id: 9,
+  no: 'P15A',
+  condignation: 'parter',
+  usableArea: 64.32,
+  extraAreaType: 'ogródek',
+  extraAreaSize: 87,
+  brutto: 289500,
+  planUrl: null,
+  status: 'wolny'
+}, {
+  id: 10,
+  no: 'P15B',
+  condignation: 'piętro',
+  usableArea: 66.57,
+  extraAreaType: 'strych',
+  extraAreaSize: 15,
+  brutto: 259500,
+  planUrl: null,
+  status: 'sprzedany'
+}, {
+  id: 11,
+  no: 'P16B',
+  condignation: 'parter',
+  usableArea: 64.32,
+  extraAreaType: 'ogródek',
+  extraAreaSize: 83,
+  brutto: 289500,
+  planUrl: null,
+  status: 'wolny'
+}, {
+  id: 12,
+  no: 'P16B',
+  condignation: 'piętro',
+  usableArea: 66.57,
+  extraAreaType: 'strych',
+  extraAreaSize: 15,
+  brutto: 259500,
+  planUrl: null,
+  status: 'sprzedany'
+}];
+exports.default = descriptionsArray;
 
 /***/ })
 /******/ ]);

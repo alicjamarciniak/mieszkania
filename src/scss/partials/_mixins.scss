@@ -11,6 +11,11 @@
   justify-content: $type;
   -webkit-justify-content: $type;
 }
+@mixin flex-direction($type) {
+  flex-direction: $type;
+  -webkit-flex-direction: $type;
+}
+
 @mixin flex($type) {
   flex: $type;
   -webkit-flex: $type;
