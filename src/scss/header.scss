@@ -20,6 +20,21 @@ body {
           right: 0;
           margin: auto;
         }
+        .item__title {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          display: none;
+          height: 100%;
+          width: 100%;
+          -webkit-box-shadow: inset -17px -200px 200px -123px rgba(0, 0, 0, 1.0);
+          -moz-box-shadow: inset -17px -200px 200px -123px rgba(0, 0, 0, 1.0);
+          box-shadow: inset -17px -200px 200px -123px rgba(0, 0, 0, 1.0);
+          text-align: center;
+          color: $white;
+          font-size: 20px;
+        }
       }
       .slider__button {
         margin: auto 0;
@@ -38,12 +53,22 @@ body {
 @media screen and (max-width: 321px) {
   body {
     header {
-      .slider{
+      .slider {
         .slider__item {
           img {
             width: auto;
             height: 500px;
           }
+          .item__title {
+            @include display-flex(flex);
+            @include flex-direction(column);
+            @include justify-content(flex-end);
+            padding-bottom: 35px;
+          }
+        }
+        .slider__button {
+          color: $white;
+          font-size: 30px;
         }
       }
     }
