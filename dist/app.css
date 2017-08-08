@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @keyframes fadein {
   from {
     opacity: 0; }
@@ -238,39 +239,83 @@ body section .section__description .description__filters .filters__item {
       color: #ffffff; }
 
 body section .section__views {
-  background: url("/home/drallum/Desktop/mieszkania/src/images/views_background.png") center no-repeat;
+  background: url("/home/drallum/Desktop/mieszkania/src/images/views_background.png") center repeat;
   height: 850px;
   display: flex;
   display: -webkit- flex;
   align-items: center;
   -webkit-align-items: center; }
-  body section .section__views .views__item {
-    display: block; }
-    body section .section__views .views__item .view__images {
-      padding-right: 15px;
-      width: 50%;
-      float: left; }
-      body section .section__views .views__item .view__images .image__item {
-        display: none; }
-        body section .section__views .views__item .view__images .image__item.active {
-          display: inline; }
-    body section .section__views .views__item .view__categories {
-      padding-left: 15px;
-      width: 50%;
-      float: left; }
-      body section .section__views .views__item .view__categories .category__item {
-        background: #54555a;
-        height: 50px;
-        width: calc(50% - 15px);
-        margin-bottom: 15px;
+  body section .section__views .container {
+    position: relative; }
+    body section .section__views .container .views__item {
+      display: block; }
+      body section .section__views .container .views__item .view__images {
+        padding-right: 15px;
+        width: 50%;
         float: left; }
-        body section .section__views .views__item .view__categories .category__item:nth-child(even) {
-          margin-left: 15px; }
-        body section .section__views .views__item .view__categories .category__item:nth-child(odd) {
-          margin-right: 15px; }
-    body section .section__views .views__item .view__description {
-      background: green;
-      padding-left: 15px;
-      width: 50%;
-      height: 70px;
-      float: left; }
+        body section .section__views .container .views__item .view__images .image__item {
+          display: none; }
+          body section .section__views .container .views__item .view__images .image__item.active {
+            display: inline; }
+      body section .section__views .container .views__item .view__categories {
+        padding-left: 15px;
+        width: 50%;
+        float: left; }
+        body section .section__views .container .views__item .view__categories .category__item {
+          background: #54555a;
+          height: 50px;
+          width: calc(50% - 15px);
+          margin-bottom: 15px;
+          float: left;
+          text-align: center;
+          line-height: 50px;
+          text-transform: uppercase;
+          color: #ffffff; }
+          body section .section__views .container .views__item .view__categories .category__item:nth-child(even) {
+            margin-left: 15px; }
+          body section .section__views .container .views__item .view__categories .category__item:nth-child(odd) {
+            margin-right: 15px; }
+      body section .section__views .container .views__item .view__description {
+        float: left;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        width: 50%;
+        background: #60372f;
+        padding-left: 15px; }
+        body section .section__views .container .views__item .view__description .description__list {
+          width: 100%;
+          padding: 30px;
+          color: #ffffff;
+          font-weight: bold;
+          font-size: 16px; }
+          body section .section__views .container .views__item .view__description .description__list .list__summary {
+            width: 100%;
+            display: flex; }
+            body section .section__views .container .views__item .view__description .description__list .list__summary .summary__name {
+              flex: 5; }
+            body section .section__views .container .views__item .view__description .description__list .list__summary .summary__value {
+              flex: 2;
+              text-align: right; }
+              body section .section__views .container .views__item .view__description .description__list .list__summary .summary__value:after {
+                margin-left: 10px;
+                content: " m\B2"; }
+          body section .section__views .container .views__item .view__description .description__list .list__items {
+            margin-top: 30px;
+            padding: 0;
+            width: 100%; }
+            body section .section__views .container .views__item .view__description .description__list .list__items .list__item {
+              margin: 7px 0;
+              width: 100%;
+              display: flex; }
+              body section .section__views .container .views__item .view__description .description__list .list__items .list__item .item__name {
+                flex: 5; }
+                body section .section__views .container .views__item .view__description .description__list .list__items .list__item .item__name img {
+                  margin-right: 10px; }
+              body section .section__views .container .views__item .view__description .description__list .list__items .list__item .item__value {
+                flex: 2;
+                text-align: right; }
+                body section .section__views .container .views__item .view__description .description__list .list__items .list__item .item__value:after {
+                  margin-left: 5px;
+                  content: " m\B2"; }
