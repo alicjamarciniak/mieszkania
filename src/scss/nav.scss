@@ -21,9 +21,9 @@ body {
           }
         }
       }
-      .menu__icon {
-        display: none;
-      }
+    }
+    .nav__icon {
+      display: none;
     }
   }
 }
@@ -31,22 +31,37 @@ body {
 @media screen and (max-width: 321px) {
   body {
     nav {
+      @include display-flex(flex);
+      @include justify-content(flex-end);
+      @include align-items(center);
+      position: relative;
+      padding: 0 !important;
       .nav__menu {
-        justify-content: flex-end;
+        position: absolute;
+        top: calc(100% - 1px);
+        @include flex-direction(column);
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 100;
+        width: 100%;
+        height: auto;
+        padding: 20px 0;
         .menu__item {
-          display: none;
+          @include display-flex(flex);
+          @include justify-content(center);
+          padding: 10px 0;
         }
-        .menu__icon {
-          display: block;
-          height: 40px;
-          width: 40px;
-          padding-top: 3px;
-          background-color: $green;
-          text-align: center;
-          line-height: 40px;
-          color: $white;
-          font-size: 20px;
-        }
+      }
+      .nav__icon {
+        margin-right: 15px;
+        display: block;
+        height: 40px;
+        width: 40px;
+        padding-top: 3px;
+        background-color: $green;
+        text-align: center;
+        line-height: 40px;
+        color: $white;
+        font-size: 20px;
       }
     }
   }

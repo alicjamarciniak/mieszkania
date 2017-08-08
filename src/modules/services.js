@@ -37,10 +37,16 @@ export let makeToggleable = (invokerElement, objectElement, arrows) => {
       'glyphicon-menu-down'
     )[0].style.display =
       'inline-block';
+  invokerElement.getElementsByClassName('glyphicon-menu-up')[0].style.display =
+    'none';
   invokerElement.addEventListener('click', () => {
     toggle(objectElement);
     if (arrows) {
       changeArrow(invokerElement);
     }
   });
+};
+
+export let show = object => {
+  object.style.dysplay = 'show';
 };
