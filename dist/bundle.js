@@ -217,7 +217,7 @@ var Slider = function () {
 
     _classCallCheck(this, Slider);
 
-    window.setInterval(function () {
+    this.interval = window.setInterval(function () {
       return _this.next();
     }, 4000);
     this.activeIndex = 0;
@@ -255,11 +255,22 @@ var Slider = function () {
       this.showSlide();
     }
   }, {
+    key: 'resetInterval',
+    value: function resetInterval() {
+      var _this2 = this;
+
+      window.clearInterval(this.interval);
+      this.interval = window.setInterval(function () {
+        return _this2.next();
+      }, 4000);
+    }
+  }, {
     key: 'next',
     value: function next() {
       this.hideSlide();
       if (this.activeIndex == this.maxIndex) this.activeIndex = 0;else ++this.activeIndex;
       this.showSlide();
+      this.resetInterval();
     }
   }, {
     key: 'prev',
@@ -267,6 +278,7 @@ var Slider = function () {
       this.hideSlide();
       if (this.activeIndex == 0) this.activeIndex = this.maxIndex;else --this.activeIndex;
       this.showSlide();
+      this.resetInterval();
     }
   }]);
 

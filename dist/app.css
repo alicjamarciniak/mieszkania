@@ -149,6 +149,20 @@ body header {
         left: 0;
         right: 0;
         margin: auto; }
+      body header .slider .slider__item .item__title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: none;
+        height: 100%;
+        width: 100%;
+        -webkit-box-shadow: inset -17px -200px 200px -123px black;
+        -moz-box-shadow: inset -17px -200px 200px -123px black;
+        box-shadow: inset -17px -200px 200px -123px black;
+        text-align: center;
+        color: #ffffff;
+        font-size: 20px; }
     body header .slider .slider__button {
       margin: auto 0;
       position: absolute;
@@ -162,7 +176,18 @@ body header {
 @media screen and (max-width: 321px) {
   body header .slider .slider__item img {
     width: auto;
-    height: 500px; } }
+    height: 500px; }
+  body header .slider .slider__item .item__title {
+    display: flex;
+    display: -webkit- flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    padding-bottom: 35px; }
+  body header .slider .slider__button {
+    color: #ffffff;
+    font-size: 30px; } }
 
 body section .section__description {
   background-color: #ffffff;
