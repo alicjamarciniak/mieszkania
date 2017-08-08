@@ -3,6 +3,7 @@
 }
 a {
   &.nostyle {
+    color: inherit;
     &:link,
     &:visited,
     &:hover {
