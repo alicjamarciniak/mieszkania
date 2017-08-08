@@ -82,15 +82,37 @@ body nav {
       body nav .nav__menu .menu__item a:hover,
       body nav .nav__menu .menu__item a .active {
         color: #19885f; }
-    body nav .nav__menu .menu__icon {
-      display: none; }
+  body nav .nav__icon {
+    display: none; }
 
 @media screen and (max-width: 321px) {
-  body nav .nav__menu {
-    justify-content: flex-end; }
-    body nav .nav__menu .menu__item {
-      display: none; }
-    body nav .nav__menu .menu__icon {
+  body nav {
+    display: flex;
+    display: -webkit- flex;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    align-items: center;
+    -webkit-align-items: center;
+    position: relative;
+    padding: 0 !important; }
+    body nav .nav__menu {
+      position: absolute;
+      top: calc(100% - 1px);
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      width: 100%;
+      height: auto;
+      padding: 20px 0; }
+      body nav .nav__menu .menu__item {
+        display: flex;
+        display: -webkit- flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+        padding: 10px 0; }
+    body nav .nav__icon {
+      margin-right: 15px;
       display: block;
       height: 40px;
       width: 40px;

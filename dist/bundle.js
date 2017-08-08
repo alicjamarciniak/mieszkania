@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,15 +70,69 @@
 "use strict";
 
 
-var _navResponsive = __webpack_require__(1);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var printValue = exports.printValue = function printValue(inputSelector, outputSelector) {
+  var input = document.querySelector(inputSelector);
+  var output = document.querySelector(outputSelector);
 
-var _navResponsive2 = _interopRequireDefault(_navResponsive);
+  output.value = input.value;
+};
 
-var _slider = __webpack_require__(2);
+function toggle(objectElement) {
+  var status = objectElement.dataset.toggleStatus;
+
+  status == 1 ? objectElement.style.display = 'none' : objectElement.style.display = 'block';
+  objectElement.dataset.toggleStatus = -status;
+}
+
+function changeArrow(invokerElement) {
+  var arrowDown = invokerElement.getElementsByClassName('glyphicon-menu-down')[0];
+  var arrowUp = invokerElement.getElementsByClassName('glyphicon-menu-up')[0];
+
+  if (arrowDown.style.display == 'inline-block') {
+    arrowDown.style.display = 'none';
+    arrowUp.style.display = 'inline-block';
+  } else {
+    arrowDown.style.display = 'inline-block';
+    arrowUp.style.display = 'none';
+  }
+}
+
+var makeToggleable = exports.makeToggleable = function makeToggleable(invokerElement, objectElement, arrows) {
+  objectElement.style.display = 'none';
+  objectElement.dataset.toggleStatus = -1;
+  if (arrows) invokerElement.getElementsByClassName('glyphicon-menu-down')[0].style.display = 'inline-block';
+  invokerElement.getElementsByClassName('glyphicon-menu-up')[0].style.display = 'none';
+  invokerElement.addEventListener('click', function () {
+    toggle(objectElement);
+    if (arrows) {
+      changeArrow(invokerElement);
+    }
+  });
+};
+
+var show = exports.show = function show(object) {
+  object.style.dysplay = 'show';
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _nav = __webpack_require__(2);
+
+var _nav2 = _interopRequireDefault(_nav);
+
+var _slider = __webpack_require__(3);
 
 var _slider2 = _interopRequireDefault(_slider);
 
-var _sectionDescriptionFilters = __webpack_require__(3);
+var _sectionDescriptionFilters = __webpack_require__(4);
 
 var _sectionDescriptionFilters2 = _interopRequireDefault(_sectionDescriptionFilters);
 
@@ -94,34 +148,56 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var css = __webpack_require__(9);
 
+var navigation = new _nav2.default();
 var slider = new _slider2.default();
 var descriptionFilters = new _sectionDescriptionFilters2.default();
 var descriptionCategories = new _sectionDescriptionCategories2.default();
 var descriptionRecords = new _sectionDescriptionRecords2.default();
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _services = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Navigation = function Navigation() {
+var Navigation = function () {
+  function Navigation() {
     _classCallCheck(this, Navigation);
 
-    this.template = "\n    <nav class=\"container-fluid\">\n        <ul class=\"nav__menu\">\n            <li class=\"menu__item\">\n                <a class=\"nostyle\" href=\"#\">Inwestycja</a>\n            </li>\n            <li class=\"menu__item\">\n                <a class=\"nostyle\" href=\"#\">Dost\u0119pno\u015B\u0107</a>\n            </li>\n            <li class=\"menu__item\">\n                <a class=\"nostyle\" href=\"#\">Rzuty mieszka\u0144</a>\n            </li>\n            <li class=\"menu__item\">\n                <a class=\"nostyle\" href=\"#\">Kontakt</a>\n            </li>\n            <a href=\"javascript:void(0);\" class=\"menu__icon\" onclick=\"myFunction()\">\n                <span class=\"glyphicon glyphicon-menu-down\" aria-hidden=\"true\"></span>\n            </a>\n        </ul>\n    </nav>\n    ";
-};
+    this.navigation = document.querySelector('nav');
+    this.navigationMenu = this.navigation.querySelector('.nav__menu');
+    this.navigationIcon = this.navigation.querySelector('.nav__icon');
+    this.mediaQuery = window.matchMedia('screen and (max-width: 321px)');
+    console.log(this.mediaQuery);
+
+    if (this.mediaQuery.matches) this.makeMenuResponsive();
+  }
+
+  _createClass(Navigation, [{
+    key: 'makeMenuResponsive',
+    value: function makeMenuResponsive() {
+      (0, _services.makeToggleable)(this.navigationIcon, this.navigationMenu, true);
+    }
+  }]);
+
+  return Navigation;
+}();
 
 exports.default = Navigation;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -200,7 +276,7 @@ var Slider = function () {
 exports.default = Slider;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -212,7 +288,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _services = __webpack_require__(4);
+var _services = __webpack_require__(0);
 
 var _filtersArray = __webpack_require__(5);
 
@@ -379,55 +455,6 @@ var DescriptionFilters = function () {
 }();
 
 exports.default = DescriptionFilters;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var printValue = exports.printValue = function printValue(inputSelector, outputSelector) {
-  var input = document.querySelector(inputSelector);
-  var output = document.querySelector(outputSelector);
-
-  output.value = input.value;
-};
-
-function toggle(objectElement) {
-  var status = objectElement.dataset.toggleStatus;
-
-  status == 1 ? objectElement.style.display = 'none' : objectElement.style.display = 'block';
-  objectElement.dataset.toggleStatus = -status;
-}
-
-function changeArrow(invokerElement) {
-  var arrowDown = invokerElement.getElementsByClassName('glyphicon-menu-down')[0];
-  var arrowUp = invokerElement.getElementsByClassName('glyphicon-menu-up')[0];
-
-  if (arrowDown.style.display == 'inline-block') {
-    arrowDown.style.display = 'none';
-    arrowUp.style.display = 'inline-block';
-  } else {
-    arrowDown.style.display = 'inline-block';
-    arrowUp.style.display = 'none';
-  }
-}
-
-var makeToggleable = exports.makeToggleable = function makeToggleable(invokerElement, objectElement, arrows) {
-  objectElement.style.display = 'none';
-  objectElement.dataset.toggleStatus = -1;
-  if (arrows) invokerElement.getElementsByClassName('glyphicon-menu-down')[0].style.display = 'inline-block';
-  invokerElement.addEventListener('click', function () {
-    toggle(objectElement);
-    if (arrows) {
-      changeArrow(invokerElement);
-    }
-  });
-};
 
 /***/ }),
 /* 5 */
