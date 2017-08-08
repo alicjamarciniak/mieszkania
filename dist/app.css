@@ -32,10 +32,12 @@
 * {
   box-sizing: border-box; }
 
-a.nostyle:link, a.nostyle:visited, a.nostyle:hover {
-  text-decoration: inherit;
-  color: inherit;
-  cursor: auto; }
+a.nostyle {
+  color: inherit; }
+  a.nostyle:link, a.nostyle:visited, a.nostyle:hover {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto; }
 
 a.disabled:link, a.disabled:visited, a.disabled:hover {
   pointer-events: none;
