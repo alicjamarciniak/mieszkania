@@ -198,48 +198,113 @@ body section .section__description {
   background-color: #ffffff;
   min-height: 50vh;
   padding: 50px 0; }
-  body section .section__description .description__categories {
-    margin-bottom: 30px;
-    display: flex;
-    display: -webkit- flex;
-    justify-content: space-between;
-    -webkit-justify-content: space-between; }
-    body section .section__description .description__categories .category__item {
-      display: flex;
-      display: -webkit- flex;
-      flex-direction: column;
-      -webkit-flex-direction: column;
-      align-items: center;
-      -webkit-align-items: center;
-      padding: 20px; }
-      body section .section__description .description__categories .category__item .item__label {
-        height: 60px;
+  body section .section__description .description__records {
+    margin: 30px 0; }
+    body section .section__description .description__records .records__frame table {
+      width: 100%;
+      table-layout: fixed; }
+      body section .section__description .description__records .records__frame table thead {
+        border-top: 1px solid #000000;
+        border-bottom: 1px solid #000000; }
+        body section .section__description .description__records .records__frame table thead th {
+          position: relative;
+          height: 60px;
+          padding: 15px;
+          text-align: center;
+          vertical-align: middle; }
+          body section .section__description .description__records .records__frame table thead th .heading__item .item__title {
+            display: inline-block;
+            margin-right: 15px;
+            max-width: 100px;
+            text-align: center;
+            font-weight: bold; }
+          body section .section__description .description__records .records__frame table thead th .heading__item .item__arrows {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            color: #19885f;
+            vertical-align: middle;
+            align-self: center;
+            width: 20px;
+            display: flex;
+            display: -webkit- flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            flex-direction: column;
+            -webkit-flex-direction: column; }
+      body section .section__description .description__records .records__frame table tbody tr td {
+        width: 20%;
+        padding: 10px 0;
+        font-weight: bold;
+        text-align: center; }
+        body section .section__description .description__records .records__frame table tbody tr td.status.forsale {
+          color: #19885f; }
+        body section .section__description .description__records .records__frame table tbody tr td.status.soldout {
+          color: #60372f; }
+    body section .section__description .description__records .records__buttons {
+      display: none; }
+
+@media screen and (max-width: 321px) {
+  body section .section__description .description__records .records__frame {
+    width: calc(100% - 40px);
+    overflow: hidden;
+    float: left; }
+    body section .section__description .description__records .records__frame table {
+      position: relative;
+      width: 350%; }
+      body section .section__description .description__records .records__frame table thead th .heading__item {
+        position: relative;
+        height: 100%;
         display: flex;
         display: -webkit- flex;
-        align-items: center;
-        -webkit-align-items: center; }
-        body section .section__description .description__categories .category__item .item__label .label__title {
-          margin-right: 10px;
-          max-width: 100px;
-          text-align: center;
-          font-weight: bold; }
-        body section .section__description .description__categories .category__item .item__label .label__arrows {
+        justify-content: center;
+        -webkit-justify-content: center;
+        align-items: space-between;
+        -webkit-align-items: space-between;
+        flex-direction: column;
+        -webkit-flex-direction: column; }
+        body section .section__description .description__records .records__frame table thead th .heading__item .item__title {
           display: flex;
           display: -webkit- flex;
-          flex-direction: column;
-          -webkit-flex-direction: column;
-          color: #19885f; }
-      body section .section__description .description__categories .category__item .item__records {
-        margin: 20px 0; }
-        body section .section__description .description__categories .category__item .item__records .record__cell {
-          padding: 5px;
-          text-align: center; }
-      body section .section__description .description__categories .category__item:last-child .item__records {
-        font-weight: bold; }
-        body section .section__description .description__categories .category__item:last-child .item__records .record__cell.forsale {
-          color: #19885f; }
-        body section .section__description .description__categories .category__item:last-child .item__records .record__cell.soldout {
-          color: #60372f; }
+          align-items: center;
+          -webkit-align-items: center;
+          height: 100%; }
+        body section .section__description .description__records .records__frame table thead th .heading__item .item__arrows {
+          margin-top: 10px;
+          position: relative;
+          height: auto; }
+      body section .section__description .description__records .records__frame table tbody td {
+        width: 50%; }
+  body section .section__description .description__records .records__buttons {
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    display: flex;
+    display: -webkit- flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    float: left;
+    height: 130px; }
+    body section .section__description .description__records .records__buttons .glyphicon {
+      display: flex;
+      display: -webkit- flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      align-items: center;
+      -webkit-align-items: center;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      height: 40px;
+      width: 40px;
+      font-size: 16px;
+      font-weight: bold;
+      background: #19885f;
+      color: #ffffff; }
+      body section .section__description .description__records .records__buttons .glyphicon.disabled {
+        background: #e5e5e5; } }
 
 body section .section__description .description__filters .filters__item {
   margin: 5px 0; }

@@ -7,6 +7,10 @@
   align-items: $type;
   -webkit-align-items: $type;
 }
+@mixin align-self($type) {
+  align-self: $type;
+  -webkit-self-items: $type;
+}
 @mixin justify-content($type) {
   justify-content: $type;
   -webkit-justify-content: $type;

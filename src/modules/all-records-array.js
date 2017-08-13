@@ -1,4 +1,4 @@
-let descriptionsArray = [
+let allRecordsArray = [
   {
     id: 1,
     no: 'P11A',
@@ -132,4 +132,4 @@ let descriptionsArray = [
     status: 'sprzedany'
   }
 ];
-export default descriptionsArray;
+export default allRecordsArray;
