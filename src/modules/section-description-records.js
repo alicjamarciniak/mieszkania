@@ -1,77 +1,117 @@
-import descriptionsArray from './descriptions-array.js';
+import allRecordsArray from './all-records-array.js';
+import headingsArray from './headings-array.js';
 
 class DescriptionRecords {
   constructor() {
-    this.recordsArray = descriptionsArray;
-    this.categories = document.querySelectorAll('.category__item');
-    this.columns = {
-      no: this.categories[0].querySelector('.item__records'),
-      condignation: this.categories[1].querySelector('.item__records'),
-      usableArea: this.categories[2].querySelector('.item__records'),
-      extraArea: this.categories[3].querySelector('.item__records'),
-      brutto: this.categories[4].querySelector('.item__records'),
-      planUrl: this.categories[5].querySelector('.item__records'),
-      status: this.categories[6].querySelector('.item__records')
-    };
+    this.allRecordsArray = allRecordsArray;
+    this.transformedRecordsArray = this.allRecordsArray.slice();
+    this.headingsArray = headingsArray;
 
-    this.loadRecords();
+    this.recordsTable = this.createTable();
+    this.loadRecords(1);
+    this.loadButtons();
   }
 
-  addRecord(record) {
-    for (let column in this.columns) {
-      let cell = document.createElement('div');
-      cell.dataset.recordId = record.id;
-      cell.className = 'record__cell';
-      switch (column) {
+  createTable() {
+    let recordsTable = document.createElement('table');
+    let tableHeadings = document.createElement('thead');
+    let tableBody = document.createElement('tbody');
+
+    this.headingsArray.forEach(heading => {
+      let headingElement = document.createElement('th');
+      let headingInner = `
+        <div class='heading__item'>
+          <div class="item__title">${heading.inner}</div>
+          <div class="item__arrows">
+            <span class='glyphicon glyphicon-menu-up' aria-hidden='true'></span>
+            <span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>
+          </div>
+         </div>
+      `;
+      headingElement.innerHTML = headingInner;
+      tableHeadings.appendChild(headingElement);
+    });
+
+    recordsTable.appendChild(tableHeadings);
+    recordsTable.appendChild(tableBody);
+
+    return recordsTable;
+  }
+
+  loadRecord(recordIndex) {
+    let record = document.createElement('tr');
+    let tableBody = this.recordsTable.getElementsByTagName('tbody')[0];
+    let recordData = this.transformedRecordsArray[recordIndex];
+
+    this.headingsArray.forEach(heading => {
+      let recordCell = document.createElement('td');
+      recordCell.className = heading.name;
+      switch (heading.name) {
         case 'no':
-          cell.innerHTML = record.no;
-          break;
-        case 'usableArea':
-          cell.innerHTML = `${record.usableArea} m&#178;`;
-          break;
-        case 'extraArea':
-          cell.innerHTML = `${record.extraAreaType} ${record.extraAreaSize} m&#178;`;
-          break;
-        case 'brutto':
-          cell.innerHTML = `${record.brutto} zł`;
+          recordCell.innerHTML = recordData.no;
           break;
         case 'condignation':
-          cell.innerHTML = record.condignation;
+          recordCell.innerHTML = recordData.condignation;
+          break;
+        case 'usableArea':
+          recordCell.innerHTML = `${recordData.usableArea} m&#178;`;
+          break;
+        case 'extraArea':
+          recordCell.innerHTML = `${recordData.extraAreaType} ${recordData.extraAreaSize} m&#178;`;
+          break;
+        case 'brutto':
+          recordCell.innerHTML = `${recordData.brutto} zł`;
           break;
         case 'planUrl':
           let anchor = document.createElement('a');
           anchor.className = 'nostyle';
           anchor.innerHTML = 'pobierz';
-          if (record.planUrl) {
-            anchor.href = record.planUrl;
+          if (recordData.planUrl) {
+            anchor.href = recordData.planUrl;
           } else {
             anchor.href = '#';
             anchor.className += ' disabled';
           }
-          cell.appendChild(anchor);
+          recordCell.appendChild(anchor);
           break;
         case 'status':
-          cell.innerHTML = record.status;
-          switch (record.status) {
+          recordCell.innerHTML = recordData.status;
+          switch (recordData.status) {
             case 'wolny':
-              cell.className += ' forsale';
+              recordCell.className += ' forsale';
               break;
             case 'sprzedany':
-              cell.className += ' soldout';
+              recordCell.className += ' soldout';
               break;
             default:
-              cell.className += ' reserved';
+              recordCell.className += ' reserved';
           }
           break;
       }
-      this.columns[column].appendChild(cell);
-    }
+      record.appendChild(recordCell);
+    });
+    tableBody.appendChild(record);
   }
 
-  loadRecords() {
-    this.recordsArray.forEach(record => {
-      this.addRecord(record);
-    });
+  loadRecords(pageNumber) {
+    let startIndex = (pageNumber - 1) * 10;
+    let recordsFrame = document.querySelector('.records__frame');
+
+    for (let i = 0; i < 10; ++i) {
+      this.loadRecord(startIndex + i);
+    }
+    recordsFrame.appendChild(this.recordsTable);
+  }
+
+  loadButtons() {
+    let descriptionRecords = document.querySelector('.description__records');
+    let buttons = document.createElement('div');
+    buttons.className = 'records__buttons';
+    buttons.innerHTML = `
+    <span class='glyphicon glyphicon-menu-right' aria-hidden='true'></span>
+          <span class='glyphicon glyphicon-menu-left' aria-hidden='true'></span>
+    `;
+    descriptionRecords.appendChild(buttons);
   }
 }
 export default DescriptionRecords;

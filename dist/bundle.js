@@ -136,10 +136,6 @@ var _sectionDescriptionFilters = __webpack_require__(4);
 
 var _sectionDescriptionFilters2 = _interopRequireDefault(_sectionDescriptionFilters);
 
-var _sectionDescriptionCategories = __webpack_require__(6);
-
-var _sectionDescriptionCategories2 = _interopRequireDefault(_sectionDescriptionCategories);
-
 var _sectionDescriptionRecords = __webpack_require__(7);
 
 var _sectionDescriptionRecords2 = _interopRequireDefault(_sectionDescriptionRecords);
@@ -147,11 +143,13 @@ var _sectionDescriptionRecords2 = _interopRequireDefault(_sectionDescriptionReco
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var css = __webpack_require__(9);
+// import DescriptionCategories from './modules/section-description-categories.js';
+
 
 var navigation = new _nav2.default();
 var slider = new _slider2.default();
 var descriptionFilters = new _sectionDescriptionFilters2.default();
-var descriptionCategories = new _sectionDescriptionCategories2.default();
+// let descriptionCategories = new DescriptionCategories();
 var descriptionRecords = new _sectionDescriptionRecords2.default();
 
 /***/ }),
@@ -499,57 +497,7 @@ var filtersArray = [{
 exports.default = filtersArray;
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var DescriptionCategories = function () {
-  function DescriptionCategories() {
-    _classCallCheck(this, DescriptionCategories);
-
-    this.categories = ['nr budynku, mieszkania', 'kondygnacja', 'powierzchnia użytkowa', 'powierzchnia ogródka/strychu', 'cena brutto', 'plan', 'status'];
-    this.descriptionCategories = document.querySelector('.description__categories');
-
-    this.loadCategories();
-  }
-
-  _createClass(DescriptionCategories, [{
-    key: 'addCategoryItem',
-    value: function addCategoryItem(title) {
-      var categoryItemInner = '\n      <div class="item__label">\n        <div class="label__title">' + title + '</div>\n         <div class="label__arrows">\n          <span class=\'glyphicon glyphicon-menu-up\' aria-hidden=\'true\'></span>\n          <span class=\'glyphicon glyphicon-menu-down\' aria-hidden=\'true\'></span>\n         </div>\n        </div>\n      <div class="item__records"></div>';
-      var categoryItem = document.createElement('div');
-
-      categoryItem.className = 'category__item';
-      categoryItem.innerHTML = categoryItemInner;
-      this.descriptionCategories.appendChild(categoryItem);
-    }
-  }, {
-    key: 'loadCategories',
-    value: function loadCategories() {
-      var _this = this;
-
-      this.categories.forEach(function (category) {
-        _this.addCategoryItem(category);
-      });
-    }
-  }]);
-
-  return DescriptionCategories;
-}();
-
-exports.default = DescriptionCategories;
-
-/***/ }),
+/* 6 */,
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -562,9 +510,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _descriptionsArray = __webpack_require__(8);
+var _allRecordsArray = __webpack_require__(14);
 
-var _descriptionsArray2 = _interopRequireDefault(_descriptionsArray);
+var _allRecordsArray2 = _interopRequireDefault(_allRecordsArray);
+
+var _headingsArray = __webpack_require__(15);
+
+var _headingsArray2 = _interopRequireDefault(_headingsArray);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -574,81 +526,109 @@ var DescriptionRecords = function () {
   function DescriptionRecords() {
     _classCallCheck(this, DescriptionRecords);
 
-    this.recordsArray = _descriptionsArray2.default;
-    this.categories = document.querySelectorAll('.category__item');
-    this.columns = {
-      no: this.categories[0].querySelector('.item__records'),
-      condignation: this.categories[1].querySelector('.item__records'),
-      usableArea: this.categories[2].querySelector('.item__records'),
-      extraArea: this.categories[3].querySelector('.item__records'),
-      brutto: this.categories[4].querySelector('.item__records'),
-      planUrl: this.categories[5].querySelector('.item__records'),
-      status: this.categories[6].querySelector('.item__records')
-    };
+    this.allRecordsArray = _allRecordsArray2.default;
+    this.transformedRecordsArray = this.allRecordsArray.slice();
+    this.headingsArray = _headingsArray2.default;
 
-    this.loadRecords();
+    this.recordsTable = this.createTable();
+    this.loadRecords(1);
+    this.loadButtons();
   }
 
   _createClass(DescriptionRecords, [{
-    key: 'addRecord',
-    value: function addRecord(record) {
-      for (var column in this.columns) {
-        var cell = document.createElement('div');
-        cell.dataset.recordId = record.id;
-        cell.className = 'record__cell';
-        switch (column) {
+    key: 'createTable',
+    value: function createTable() {
+      var recordsTable = document.createElement('table');
+      var tableHeadings = document.createElement('thead');
+      var tableBody = document.createElement('tbody');
+
+      this.headingsArray.forEach(function (heading) {
+        var headingElement = document.createElement('th');
+        var headingInner = '\n        <div class=\'heading__item\'>\n          <div class="item__title">' + heading.inner + '</div>\n          <div class="item__arrows">\n            <span class=\'glyphicon glyphicon-menu-up\' aria-hidden=\'true\'></span>\n            <span class=\'glyphicon glyphicon-menu-down\' aria-hidden=\'true\'></span>\n          </div>\n         </div>\n      ';
+        headingElement.innerHTML = headingInner;
+        tableHeadings.appendChild(headingElement);
+      });
+
+      recordsTable.appendChild(tableHeadings);
+      recordsTable.appendChild(tableBody);
+
+      return recordsTable;
+    }
+  }, {
+    key: 'loadRecord',
+    value: function loadRecord(recordIndex) {
+      var record = document.createElement('tr');
+      var tableBody = this.recordsTable.getElementsByTagName('tbody')[0];
+      var recordData = this.transformedRecordsArray[recordIndex];
+
+      this.headingsArray.forEach(function (heading) {
+        var recordCell = document.createElement('td');
+        recordCell.className = heading.name;
+        switch (heading.name) {
           case 'no':
-            cell.innerHTML = record.no;
-            break;
-          case 'usableArea':
-            cell.innerHTML = record.usableArea + ' m&#178;';
-            break;
-          case 'extraArea':
-            cell.innerHTML = record.extraAreaType + ' ' + record.extraAreaSize + ' m&#178;';
-            break;
-          case 'brutto':
-            cell.innerHTML = record.brutto + ' z\u0142';
+            recordCell.innerHTML = recordData.no;
             break;
           case 'condignation':
-            cell.innerHTML = record.condignation;
+            recordCell.innerHTML = recordData.condignation;
+            break;
+          case 'usableArea':
+            recordCell.innerHTML = recordData.usableArea + ' m&#178;';
+            break;
+          case 'extraArea':
+            recordCell.innerHTML = recordData.extraAreaType + ' ' + recordData.extraAreaSize + ' m&#178;';
+            break;
+          case 'brutto':
+            recordCell.innerHTML = recordData.brutto + ' z\u0142';
             break;
           case 'planUrl':
             var anchor = document.createElement('a');
             anchor.className = 'nostyle';
             anchor.innerHTML = 'pobierz';
-            if (record.planUrl) {
-              anchor.href = record.planUrl;
+            if (recordData.planUrl) {
+              anchor.href = recordData.planUrl;
             } else {
               anchor.href = '#';
               anchor.className += ' disabled';
             }
-            cell.appendChild(anchor);
+            recordCell.appendChild(anchor);
             break;
           case 'status':
-            cell.innerHTML = record.status;
-            switch (record.status) {
+            recordCell.innerHTML = recordData.status;
+            switch (recordData.status) {
               case 'wolny':
-                cell.className += ' forsale';
+                recordCell.className += ' forsale';
                 break;
               case 'sprzedany':
-                cell.className += ' soldout';
+                recordCell.className += ' soldout';
                 break;
               default:
-                cell.className += ' reserved';
+                recordCell.className += ' reserved';
             }
             break;
         }
-        this.columns[column].appendChild(cell);
-      }
+        record.appendChild(recordCell);
+      });
+      tableBody.appendChild(record);
     }
   }, {
     key: 'loadRecords',
-    value: function loadRecords() {
-      var _this = this;
+    value: function loadRecords(pageNumber) {
+      var startIndex = (pageNumber - 1) * 10;
+      var recordsFrame = document.querySelector('.records__frame');
 
-      this.recordsArray.forEach(function (record) {
-        _this.addRecord(record);
-      });
+      for (var i = 0; i < 10; ++i) {
+        this.loadRecord(startIndex + i);
+      }
+      recordsFrame.appendChild(this.recordsTable);
+    }
+  }, {
+    key: 'loadButtons',
+    value: function loadButtons() {
+      var descriptionRecords = document.querySelector('.description__records');
+      var buttons = document.createElement('div');
+      buttons.className = 'records__buttons';
+      buttons.innerHTML = '\n    <span class=\'glyphicon glyphicon-menu-right\' aria-hidden=\'true\'></span>\n          <span class=\'glyphicon glyphicon-menu-left\' aria-hidden=\'true\'></span>\n    ';
+      descriptionRecords.appendChild(buttons);
     }
   }]);
 
@@ -658,7 +638,18 @@ var DescriptionRecords = function () {
 exports.default = DescriptionRecords;
 
 /***/ }),
-/* 8 */
+/* 8 */,
+/* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -667,7 +658,7 @@ exports.default = DescriptionRecords;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var descriptionsArray = [{
+var allRecordsArray = [{
   id: 1,
   no: 'P11A',
   condignation: 'parter',
@@ -788,13 +779,41 @@ var descriptionsArray = [{
   planUrl: null,
   status: 'sprzedany'
 }];
-exports.default = descriptionsArray;
+exports.default = allRecordsArray;
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports) {
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var headingsArray = [{
+  name: 'no',
+  inner: 'nr budynku, mieszkania'
+}, {
+  name: 'condignation',
+  inner: 'kondygnacja'
+}, {
+  name: 'usableArea',
+  inner: 'powierzchnia użytkowa'
+}, {
+  name: 'extraArea',
+  inner: 'powierzchnia ogródka/strychu'
+}, {
+  name: 'brutto',
+  inner: 'cena brutto'
+}, {
+  name: 'planUrl',
+  inner: 'plan'
+}, {
+  name: 'status',
+  inner: 'status'
+}];
+exports.default = headingsArray;
 
 /***/ })
 /******/ ]);
