@@ -124,7 +124,6 @@ class DescriptionRecords {
         this.prevColumnButton.classList.remove('disabled');
         break;
       case this.columnsAmount - 2:
-        console.log('max - 2');
         this.nextColumnButton.classList.remove('disabled');
         break;
       case this.columnsAmount - 1:
