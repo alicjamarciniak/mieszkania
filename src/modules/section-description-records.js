@@ -6,10 +6,16 @@ class DescriptionRecords {
     this.allRecordsArray = allRecordsArray;
     this.transformedRecordsArray = this.allRecordsArray.slice();
     this.headingsArray = headingsArray;
+    this.currentFirstColumn = 1;
+    this.columnsAmount = this.headingsArray.length;
+    this.nextColumnButton;
+    this.prevColumnButton;
 
     this.recordsTable = this.createTable();
     this.loadRecords(1);
     this.loadButtons();
+    this.nextColumnButton;
+    this.prevColumnButton;
   }
 
   createTable() {
@@ -103,14 +109,73 @@ class DescriptionRecords {
     recordsFrame.appendChild(this.recordsTable);
   }
 
+  changeColumn() {
+    let temp = (this.recordsTable.style.right = `${(this.currentFirstColumn -
+      1) *
+      50}%`);
+  }
+
+  changeArrowAvailability(maxFirstColumn) {
+    switch (this.currentFirstColumn) {
+      case 1:
+        this.prevColumnButton.classList.add('disabled');
+        break;
+      case 2:
+        this.prevColumnButton.classList.remove('disabled');
+        break;
+      case this.columnsAmount - 2:
+        console.log('max - 2');
+        this.nextColumnButton.classList.remove('disabled');
+        break;
+      case this.columnsAmount - 1:
+        this.nextColumnButton.classList.add('disabled');
+        break;
+    }
+  }
+
+  nextColumn(event) {
+    const maxFirstColumn = this.columnsAmount - 1;
+    if (this.currentFirstColumn < maxFirstColumn) {
+      ++this.currentFirstColumn;
+      this.changeColumn();
+      this.changeArrowAvailability();
+    }
+  }
+
+  prevColumn(event) {
+    const maxFirstColumn = this.columnAmount - 1;
+    if (this.currentFirstColumn > 1) {
+      --this.currentFirstColumn;
+      this.changeColumn();
+      this.changeArrowAvailability();
+    }
+  }
+
+  addButtonsListeners() {
+    this.prevColumnButton.classList.add('disabled');
+
+    this.nextColumnButton.addEventListener('click', () => this.nextColumn());
+    this.prevColumnButton.addEventListener('click', () => this.prevColumn());
+  }
+
+  createColumnButton(arrowDirection) {
+    let button = document.createElement('span');
+    button.className = `glyphicon glyphicon-menu-${arrowDirection}`;
+    button.ariaHidden = 'true';
+
+    return button;
+  }
+
   loadButtons() {
     let descriptionRecords = document.querySelector('.description__records');
     let buttons = document.createElement('div');
     buttons.className = 'records__buttons';
-    buttons.innerHTML = `
-    <span class='glyphicon glyphicon-menu-right' aria-hidden='true'></span>
-          <span class='glyphicon glyphicon-menu-left' aria-hidden='true'></span>
-    `;
+    this.nextColumnButton = this.createColumnButton('right');
+    this.prevColumnButton = this.createColumnButton('left');
+
+    this.addButtonsListeners();
+    buttons.appendChild(this.nextColumnButton);
+    buttons.appendChild(this.prevColumnButton);
     descriptionRecords.appendChild(buttons);
   }
 }

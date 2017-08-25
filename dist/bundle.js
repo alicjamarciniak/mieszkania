@@ -136,20 +136,17 @@ var _sectionDescriptionFilters = __webpack_require__(4);
 
 var _sectionDescriptionFilters2 = _interopRequireDefault(_sectionDescriptionFilters);
 
-var _sectionDescriptionRecords = __webpack_require__(7);
+var _sectionDescriptionRecords = __webpack_require__(6);
 
 var _sectionDescriptionRecords2 = _interopRequireDefault(_sectionDescriptionRecords);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var css = __webpack_require__(9);
-// import DescriptionCategories from './modules/section-description-categories.js';
-
 
 var navigation = new _nav2.default();
 var slider = new _slider2.default();
 var descriptionFilters = new _sectionDescriptionFilters2.default();
-// let descriptionCategories = new DescriptionCategories();
 var descriptionRecords = new _sectionDescriptionRecords2.default();
 
 /***/ }),
@@ -497,8 +494,7 @@ var filtersArray = [{
 exports.default = filtersArray;
 
 /***/ }),
-/* 6 */,
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -510,11 +506,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _allRecordsArray = __webpack_require__(14);
+var _allRecordsArray = __webpack_require__(7);
 
 var _allRecordsArray2 = _interopRequireDefault(_allRecordsArray);
 
-var _headingsArray = __webpack_require__(15);
+var _headingsArray = __webpack_require__(8);
 
 var _headingsArray2 = _interopRequireDefault(_headingsArray);
 
@@ -529,10 +525,16 @@ var DescriptionRecords = function () {
     this.allRecordsArray = _allRecordsArray2.default;
     this.transformedRecordsArray = this.allRecordsArray.slice();
     this.headingsArray = _headingsArray2.default;
+    this.currentFirstColumn = 1;
+    this.columnsAmount = this.headingsArray.length;
+    this.nextColumnButton;
+    this.prevColumnButton;
 
     this.recordsTable = this.createTable();
     this.loadRecords(1);
     this.loadButtons();
+    this.nextColumnButton;
+    this.prevColumnButton;
   }
 
   _createClass(DescriptionRecords, [{
@@ -622,12 +624,84 @@ var DescriptionRecords = function () {
       recordsFrame.appendChild(this.recordsTable);
     }
   }, {
+    key: 'changeColumn',
+    value: function changeColumn() {
+      var temp = this.recordsTable.style.right = (this.currentFirstColumn - 1) * 50 + '%';
+    }
+  }, {
+    key: 'changeArrowAvailability',
+    value: function changeArrowAvailability(maxFirstColumn) {
+      switch (this.currentFirstColumn) {
+        case 1:
+          this.prevColumnButton.classList.add('disabled');
+          break;
+        case 2:
+          this.prevColumnButton.classList.remove('disabled');
+          break;
+        case this.columnsAmount - 2:
+          console.log('max - 2');
+          this.nextColumnButton.classList.remove('disabled');
+          break;
+        case this.columnsAmount - 1:
+          this.nextColumnButton.classList.add('disabled');
+          break;
+      }
+    }
+  }, {
+    key: 'nextColumn',
+    value: function nextColumn(event) {
+      var maxFirstColumn = this.columnsAmount - 1;
+      if (this.currentFirstColumn < maxFirstColumn) {
+        ++this.currentFirstColumn;
+        this.changeColumn();
+        this.changeArrowAvailability();
+      }
+    }
+  }, {
+    key: 'prevColumn',
+    value: function prevColumn(event) {
+      var maxFirstColumn = this.columnAmount - 1;
+      if (this.currentFirstColumn > 1) {
+        --this.currentFirstColumn;
+        this.changeColumn();
+        this.changeArrowAvailability();
+      }
+    }
+  }, {
+    key: 'addButtonsListeners',
+    value: function addButtonsListeners() {
+      var _this = this;
+
+      this.prevColumnButton.classList.add('disabled');
+
+      this.nextColumnButton.addEventListener('click', function () {
+        return _this.nextColumn();
+      });
+      this.prevColumnButton.addEventListener('click', function () {
+        return _this.prevColumn();
+      });
+    }
+  }, {
+    key: 'createColumnButton',
+    value: function createColumnButton(arrowDirection) {
+      var button = document.createElement('span');
+      button.className = 'glyphicon glyphicon-menu-' + arrowDirection;
+      button.ariaHidden = 'true';
+
+      return button;
+    }
+  }, {
     key: 'loadButtons',
     value: function loadButtons() {
       var descriptionRecords = document.querySelector('.description__records');
       var buttons = document.createElement('div');
       buttons.className = 'records__buttons';
-      buttons.innerHTML = '\n    <span class=\'glyphicon glyphicon-menu-right\' aria-hidden=\'true\'></span>\n          <span class=\'glyphicon glyphicon-menu-left\' aria-hidden=\'true\'></span>\n    ';
+      this.nextColumnButton = this.createColumnButton('right');
+      this.prevColumnButton = this.createColumnButton('left');
+
+      this.addButtonsListeners();
+      buttons.appendChild(this.nextColumnButton);
+      buttons.appendChild(this.prevColumnButton);
       descriptionRecords.appendChild(buttons);
     }
   }]);
@@ -638,18 +712,7 @@ var DescriptionRecords = function () {
 exports.default = DescriptionRecords;
 
 /***/ }),
-/* 8 */,
-/* 9 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -782,7 +845,7 @@ var allRecordsArray = [{
 exports.default = allRecordsArray;
 
 /***/ }),
-/* 15 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -814,6 +877,12 @@ var headingsArray = [{
   inner: 'status'
 }];
 exports.default = headingsArray;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
