@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+a {
+  &.nostyle {
+    color: inherit;
+    &:link,
+    &:visited,
+    &:hover {
+      text-decoration: inherit;
+      color: inherit;
+      cursor: auto;
+    }
+  }
+  &.disabled {
+    &:link,
+    &:visited,
+    &:hover {
+      pointer-events: none;
+      cursor: default;
+      color: $light-grey;
+    }
+  }
+}
+button {
+  &:focus {
+    outline: none;
+  }
+}
+ul {
+  list-style: none;
+}
+.nopadding {
+  padding: 0 !important;
+}
+.display--left {
+  left: 0;
+}
+.display--right {
+  right: 0;
+}
+.clear-both {
+  clear: both;
+}

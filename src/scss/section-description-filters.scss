@@ -1,0 +1,90 @@
+body {
+  section {
+    .section__description {
+      .description__filters {
+        .filters__item {
+          margin: 5px 0;
+          &.filters__box {
+            background-color: $light-grey;
+            height: auto;
+            .box__label {
+              @include display-flex(flex);
+              height: 100%;
+              @include align-items(stretch);
+              line-height: 40px;
+              .label__text {
+                @include flex(7);
+                padding-left: 20px;
+                font-size: 14px;
+                color: $dark-grey;
+              }
+              .label__arrow {
+                @include flex(3);
+                background-color: $green;
+                padding-top: 3px;
+                font-size: 25px;
+                color: $white;
+                text-align: center;
+                .glyphicon-menu-up {
+                  display: none;
+                }
+              }
+            }
+            .box__options {
+              background-color: $light-grey;
+              .options__item {
+                display: block;
+                padding: 5px 10px;
+                font-weight: normal;
+                input {
+                  padding: 4px;
+                }
+              }
+            }
+          }
+          &.filters__button {
+            height: 40px;
+            background-color: $dark-grey;
+            text-align: center;
+            line-height: 40px;
+            font-size: 14px;
+            text-transform: uppercase;
+            .button__label {
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 321px) {
+  body {
+    section {
+      .section__description {
+        .description__filters {
+          .filters__item {
+            &.filters__box {
+              margin-right: -7px;
+              margin-left: -7px;
+              .box__label {
+                .label__text {
+                  padding-left: 10px;
+                  font-size: 13px;
+                }
+                .label__arrow {
+                  font-size: 16px;
+                }
+              }
+            }
+            &.filters__button {
+              margin-right: -7px;
+              margin-left: -7px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

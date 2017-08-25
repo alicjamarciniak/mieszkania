@@ -1,7 +1,9 @@
-body {
-    background: pink;
-    p {
-        color: white;
-        font-size: 16px;
-    }
-}
+@import "scss/partials/variables";
+@import "scss/partials/mixins";
+@import "scss/global";
+@import "scss/nav";
+@import "scss/header";
+@import "scss/section-description";
+@import "scss/section-description-records";
+@import "scss/section-description-filters";
+@import "scss/section-views";

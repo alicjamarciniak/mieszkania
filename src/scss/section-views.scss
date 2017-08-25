@@ -1,0 +1,112 @@
+body {
+  section {
+    .section__views {
+      background: url('/home/drallum/Desktop/mieszkania/src/images/views_background.png')
+        center repeat;
+      height: 850px;
+      @include display-flex(flex);
+      @include align-items(center);
+      .container {
+        position: relative;
+        .views__item {
+          display: block;
+          .view__images {
+            padding-right: 15px;
+            width: 50%;
+            float: left;
+            .image__item {
+              display: none;
+              &.active {
+                display: inline;
+              }
+            }
+          }
+          .view__categories {
+            //   @include display-flex(flex);
+            //   @include justify-content(space-between);
+            //   @include align-items (space-between);
+            padding-left: 15px;
+            width: 50%;
+            float: left;
+            .category__item {
+              background: $dark-grey;
+              height: 50px;
+              width: calc(50% - 15px);
+              margin-bottom: 15px;
+              float: left;
+              text-align: center;
+              line-height: 50px;
+              text-transform: uppercase;
+              color: $white;
+              &:nth-child(even) {
+                margin-left: 15px;
+              }
+              &:nth-child(odd) {
+                margin-right: 15px;
+              }
+            }
+          }
+          .view__description {
+            float: left;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            width: 50%;
+            background: $brown;
+            padding-left: 15px;
+            .description__list {
+              width: 100%;
+              padding: 30px;
+              color: $white;
+              font-weight: bold;
+              font-size: 16px;
+              .list__summary {
+                width: 100%;
+                display: flex;
+                .summary__name {
+                  flex: 5;
+                }
+                .summary__value {
+                  flex: 2;
+                  text-align: right;
+                  &:after {
+                    margin-left: 10px;
+                    content: ' m' + $square-hex;
+                  }
+                }
+              }
+              .list__items {
+                margin-top: 30px;
+                padding: 0;
+                width: 100%;
+                .list__item {
+                  margin: 7px 0;
+                  width: 100%;
+                  display: flex;
+                  .item__name {
+                    flex: 5;
+                    img {
+                      margin-right: 10px;
+                    }
+                  }
+                  .item__value {
+                    flex: 2;
+                    text-align: right;
+                    &:after {
+                      margin-left: 5px;
+                      content: ' m' + $square-hex;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 321px) {
+}

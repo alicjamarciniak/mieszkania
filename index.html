@@ -1,12 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Mieszkania</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <p>Teest</p>
-        <script src="dist/bundle.js"></script>
-    </body>
+<html lang='en'>
+
+<head>
+  <title>Mieszkania</title>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' href='dist/app.css'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+</head>
+
+
+<body>
+  <a class='nostyle' name='inwestycja'>
+    <nav class='container-fluid'>
+      <ul class='nav__menu'>
+        <li class='menu__item'>
+          <a class='nostyle' href='#inwestycja'>Inwestycja</a>
+        </li>
+        <li class='menu__item'>
+          <a class='nostyle' href='#dostepnosc'>Dostępność</a>
+        </li>
+        <li class='menu__item'>
+          <a class='nostyle' href='#rzuty-mieszkan'>Rzuty mieszkań</a>
+        </li>
+        <li class='menu__item'>
+          <a class='nostyle' href='#kontakt'>Kontakt</a>
+        </li>
+      </ul>
+      <a class='nav__icon'>
+      <span class='glyphicon glyphicon-menu-down' aria-hidden='true'></span>
+      <span class='glyphicon glyphicon-menu-up' aria-hidden='true'></span>
+    </a>
+    </nav>
+    <header class='container-fluid nopadding'>
+      <div class='slider'>
+        <div class="slider__item">
+          <img src="src/images/estate_2.jpg" alt="">
+          <div class=item__title>ul. Floriańska, Kraków</div>
+        </div>
+        <div class="slider__item">
+          <img src="src/images/estate_3.jpg" alt="">
+          <div class=item__title>ul. Kapelanka, Kraków</div>
+        </div>
+        <div class="slider__item">
+          <img src="src/images/estate_2.jpg" alt="">
+          <div class=item__title>ul. Przemysłowa, Kraków</div>
+        </div>
+        <div class="slider__item">
+          <img src="src/images/estate_3.jpg" alt="">
+          <div class=item__title>ul. Norymberska, Kraków</div>
+        </div>
+        <button class="button__left slider__button display--left">&#10094;</button>
+        <button class="button__right slider__button display--right">&#10095;</button>
+      </div>
+    </header>
+  </a>
+
+  <section>
+    <a class='nostyle' name='dostepnosc'>
+      <div class="section__description container-fluid">
+        <div class="container">
+          <div class="description__filters row">
+          </div>
+          <div class="description__records row">
+            <div class='records__frame'></div>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a class='nostyle' name='rzuty-mieszkan'>
+      <div class="section__views container-fluid">
+        <div class="container">
+          <div class='views__item row'>
+            <div class='view__images'>
+              <img class='image__item active' src="src/images/parter_prawy.png" alt="">
+              <img class='image__item' src="src/images/parter_prawy.png" alt="">
+              <img class='image__item' src="src/images/parter_prawy.png" alt="">
+              <img class='image__item' src="src/images/parter_prawy.png" alt="">
+            </div>
+            <div class='view__categories'>
+              <div class='category__item'>Parter Lewy</div>
+              <div class='category__item'>Parter Prawy</div>
+              <div class='category__item'>Piętro Lewe</div>
+              <div class='category__item'>Piętro Prawe</div>
+            </div>
+            <div class='view__description'>
+              <div class="description__list">
+                <div class="list__summary">
+                  <div class='summary__name'>powierzchnia użytkowa</div>
+                  <div class='summary__value'>64.32</div>
+                </div>
+                <ol class="list__items">
+                  <li id='dl-1' class='list__item'>
+                    <div class='item__name'><img src="src/images/list_1.png" alt="">salon z aneksem kuchennym
+                    </div>
+                    <div class='item__value'>25.50</div>
+                  </li>
+                  <li id='dl-2' class='list__item'>
+                    <div class='item__name'>
+                      <img src="src/images/list_2.png" alt="">łazienka
+                    </div>
+                    <div class='item__value'>6.33</div>
+                  </li>
+                  <li id='dl-3' class='list__item'>
+                    <div class='item__name'>
+                      <img src="src/images/list_3.png" alt="">pokój
+                    </div>
+                    <div class='item__value'>12.05</div>
+                  </li>
+                  <li id='dl-4' class='list__item'>
+                    <div class='item__name'>
+                      <img src="src/images/list_4.png" alt="">pokój
+                    </div>
+                    <div class='item__value'>9.53</div>
+                  </li>
+                  <li id='dl-5' class='list__item'>
+                    <div class='item__name'>
+                      <img src="src/images/list_5.png" alt="">garderoba
+                    </div>
+                    <div class='item__value'>1.62</div>
+                  </li>
+                  <li id='dl-6' class='list__item'>
+                    <div class='item__name'>
+                      <img src="src/images/list_6.png" alt="">hol
+                    </div>
+                    <div class='item__value'>5.50</div>
+                  </li>
+                  <li id='dl-7' class='list__item'>
+                    <div class='item__name'>
+                      <img src="src/images/list_7.png" alt="">przedpokój
+                    </div>
+                    <div class='item__value'>3.79</div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class='clear-both'></div>
+        </div>
+      </div>
+    </a>
+    <a class='nostyle' name='kontakt'>
+    </a>
+    </div>
+
+  </section>
+
+  <script src='dist/bundle.js'></script>
+</body>
+
 </html>

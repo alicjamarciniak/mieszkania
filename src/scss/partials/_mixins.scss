@@ -1,0 +1,67 @@
+@mixin display-flex($type) {
+  display: $type;
+  display: -webkit-$type;
+}
+
+@mixin align-items($type) {
+  align-items: $type;
+  -webkit-align-items: $type;
+}
+@mixin align-self($type) {
+  align-self: $type;
+  -webkit-self-items: $type;
+}
+@mixin justify-content($type) {
+  justify-content: $type;
+  -webkit-justify-content: $type;
+}
+@mixin flex-direction($type) {
+  flex-direction: $type;
+  -webkit-flex-direction: $type;
+}
+
+@mixin flex($type) {
+  flex: $type;
+  -webkit-flex: $type;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
